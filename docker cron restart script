@@ -1,0 +1,3 @@
+container_id=`docker ps -q -f name=put_docker_name_`
+docker stop $container_id
+docker start $container_id
