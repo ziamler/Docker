@@ -1,0 +1,27 @@
+Docker build command
+
+docker build . -t webapp:latest  (  means you can define your tag name to replace webapp:latest )
+
+docker run -d -t -p 80:80 --name webapp10 webapp:latest
+
+—no-install-recommends put this on run command then you no need to put every time install
+
+Splunk in docker
+
+HEALTHCHECK —interval=20s —retries=5 —timeout=30s —start-period=5s CMD curl -I -f “http://localhost:80” || exit 1
+
+Docker stop $(docker ps -q)
+
+Docker rm $(docker ps -a -q)
+
+Docker ps - - filter status=exited
+
+docker ps -a | grep "minutes ago" | awk {'print $1'} | xargs docker start
+
+for i in {8..21}; do echo "====== newapis$i ======="; ssh newapis$i "docker stop jAuth_0.1.0_71 && docker start jAuth_0.1.0_70 && sleep 5 "; done
+
+for i in `cat ultron.conf`; do echo "====$i===="; ssh $i "docker restart Ultron_1.0.0_768" && sleep 30 ; done
+
+for host in `cat /root/hosts.conf`; do echo "----- $host -----"; ssh $host grep  'dr.jyotimishra609@gmail.com' /shop/logs/live/bob/2018-06-2[1-9]-*_order_creation_error.log ; done
+
+for host in `cat /root/hosts.conf`; do echo "----- $host -----"; scp $host:/shop/logs/live/bob/2018-06-24-08_order_creation_error.log 2018-06-24-08_order_creation_error.log_"$host" ; done
