@@ -4,6 +4,10 @@ docker build . -t webapp:latest  (  means you can define your tag name to replac
 
 docker run -d -t -p 80:80 --name webapp10 webapp:latest
 
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /root/jenkins_home/:/var/jenkins_home 69fe1fcc910a
+
+docker run -u $UID -d --name jenkins -p 8080:8080 -p 50000:50000 -v /root/jenkins_home/:/var/jenkins_home ea470c80c15d
+
 —no-install-recommends put this on run command then you no need to put every time install
 
 Splunk in docker
